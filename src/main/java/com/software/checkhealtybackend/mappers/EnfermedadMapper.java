@@ -1,6 +1,5 @@
 package com.software.checkhealtybackend.mappers;
 
-
 import com.software.checkhealtybackend.dto.EnfermedadDTO;
 import com.software.checkhealtybackend.model.Enfermedad;
 import org.mapstruct.Mapper;

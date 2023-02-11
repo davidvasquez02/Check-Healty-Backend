@@ -17,8 +17,8 @@ public class EnfermedadController {
 
     @GetMapping("/id/{id}")
     public ResponseEntity<EnfermedadDTO> findById(@PathVariable(value = "id") Long aId) {
-        var usuario = this.enfermedadService.findById(aId);
-        return new ResponseEntity<>(EnfermedadMapper.INSTANCE.toEnfermedadDTO(usuario), HttpStatus.OK);
+        var enfermedad = this.enfermedadService.findById(aId);
+        return new ResponseEntity<>(EnfermedadMapper.INSTANCE.toEnfermedadDTO(enfermedad), HttpStatus.OK);
     }
 
     @PostMapping
@@ -28,13 +28,13 @@ public class EnfermedadController {
     }
 
     @PutMapping
-    public ResponseEntity<EnfermedadDTO> updateUsuario(@RequestBody EnfermedadDTO aEnfermedadDTO) {
+    public ResponseEntity<EnfermedadDTO> updateEnfermedad(@RequestBody EnfermedadDTO aEnfermedadDTO) {
         var enfermedad = this.enfermedadService.updateEnfermedad(EnfermedadMapper.INSTANCE.toEnfermedad(aEnfermedadDTO));
         return new ResponseEntity<>(EnfermedadMapper.INSTANCE.toEnfermedadDTO(enfermedad), HttpStatus.OK);
     }
 
     @DeleteMapping("/id/{id}")
-    public ResponseEntity<Boolean> deleteUsuario(@PathVariable(value = "id") Long aId) {
+    public ResponseEntity<Boolean> deleteEnfermedad(@PathVariable(value = "id") Long aId) {
         this.enfermedadService.deleteEnfermedad(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
