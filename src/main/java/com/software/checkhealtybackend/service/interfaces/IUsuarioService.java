@@ -1,6 +1,5 @@
 package com.software.checkhealtybackend.service.interfaces;
 
-
 import com.software.checkhealtybackend.model.Usuario;
 import org.springframework.stereotype.Service;
 

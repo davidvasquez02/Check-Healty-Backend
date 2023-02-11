@@ -1,6 +1,5 @@
 package com.software.checkhealtybackend.service.impl;
 
-import com.software.checkhealtybackend.dto.UsuarioDTO;
 import com.software.checkhealtybackend.model.Usuario;
 import com.software.checkhealtybackend.repository.IUsuarioRepository;
 import com.software.checkhealtybackend.service.interfaces.IUsuarioService;
