@@ -4,8 +4,10 @@ import com.software.checkhealtybackend.model.Examen;
 import com.software.checkhealtybackend.repository.IExamenRepository;
 import com.software.checkhealtybackend.service.interfaces.IExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class ExamenServiceImpl implements IExamenService {
 
     private IExamenRepository examenRepository;
