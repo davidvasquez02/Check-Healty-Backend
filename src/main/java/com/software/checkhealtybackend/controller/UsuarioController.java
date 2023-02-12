@@ -9,11 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/usuario")
 public class UsuarioController {
 
     private IUsuarioService usuarioService;
-
 
     @GetMapping("/id/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable(value = "id") Long aId) {

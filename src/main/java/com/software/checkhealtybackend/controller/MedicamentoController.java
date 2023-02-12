@@ -9,11 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/medicamento")
 public class MedicamentoController {
 
     private IMedicamentoService medicamentoService;
-
 
     @GetMapping("/id/{id}")
     public ResponseEntity<MedicamentoDTO> findById(@PathVariable(value = "id") Long aId) {
@@ -38,7 +38,6 @@ public class MedicamentoController {
         this.medicamentoService.deleteMedicamento(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
-
 
     @Autowired
     public void setMedicamentoService(IMedicamentoService medicamentoService){

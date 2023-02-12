@@ -1,9 +1,9 @@
 package com.software.checkhealtybackend.dto;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 

@@ -4,12 +4,12 @@ import com.software.checkhealtybackend.model.Medicamento;
 import com.software.checkhealtybackend.repository.IMedicamentoRepository;
 import com.software.checkhealtybackend.service.interfaces.IMedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class MedicamentoServiceImpl implements IMedicamentoService {
-
     private IMedicamentoRepository medicamentoRepository;
-
 
     @Override
     public Medicamento findById(Long aId) {
