@@ -14,7 +14,6 @@ public class MedicamentoController {
 
     private IMedicamentoService medicamentoService;
 
-
     @GetMapping("/id/{id}")
     public ResponseEntity<MedicamentoDTO> findById(@PathVariable(value = "id") Long aId) {
         var medicamento = this.medicamentoService.findById(aId);
@@ -38,7 +37,6 @@ public class MedicamentoController {
         this.medicamentoService.deleteMedicamento(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
-
 
     @Autowired
     public void setMedicamentoService(IMedicamentoService medicamentoService){

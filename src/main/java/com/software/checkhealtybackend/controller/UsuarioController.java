@@ -14,7 +14,6 @@ public class UsuarioController {
 
     private IUsuarioService usuarioService;
 
-
     @GetMapping("/id/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable(value = "id") Long aId) {
         var usuario = this.usuarioService.findById(aId);
