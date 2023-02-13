@@ -15,9 +15,9 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProgramacionMedicamento implements Serializable {
+public class ProgramacionExamen implements Serializable {
 
-    private static final long serialVersionUID = 7426313733622189935L;
+    private static final long serialVersionUID = -3584305763534871043L;
 
     // Atributos
     @Id
@@ -25,17 +25,14 @@ public class ProgramacionMedicamento implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idMedicamentoUsuario", nullable = false)
-    private Long idMedicamentoUsuario;
+    @Column(name = "idExamenUsuario", nullable = false)
+    private Long idExamenUsuario;
 
     @Column(name = "idTipoFrecuencia", nullable = false)
     private Long idTipoFrecuencia;
 
-    @Column(name = "idTipoDosis", nullable = false)
-    private Long idTipoDosis;
-
-    @Column(name = "dosis")
-    private String dosis;
+    @Column(name = "idTipoMedida", nullable = false)
+    private Long idTipoMedida;
 
     @Column(name = "frecuencia")
     private String frecuencia;
@@ -43,10 +40,16 @@ public class ProgramacionMedicamento implements Serializable {
     @Column(name = "fechaInicio")
     private Date fechaInicio;
 
+    @Column(name = "medidaMin")
+    private String medidaMin;
+
+    @Column(name = "medidaMax")
+    private String medidaMax;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idMedicamentoUsuario", insertable = false, updatable = false)
-    private MedicamentoUsuario medicamentoUsuario;
+    @JoinColumn(name = "idExamenUsuario", insertable = false, updatable = false)
+    private ExamenUsuario examenUsuario;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -55,6 +58,6 @@ public class ProgramacionMedicamento implements Serializable {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTipoDosis", insertable = false, updatable = false)
-    private TipoDosis tipoDosis;
+    @JoinColumn(name = "idTipoMedida", insertable = false, updatable = false)
+    private TipoMedida tipoMedida;
 }

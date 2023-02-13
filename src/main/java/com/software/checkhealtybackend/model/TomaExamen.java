@@ -15,9 +15,9 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DosisMedicamento implements Serializable {
+public class TomaExamen implements Serializable {
 
-    private static final long serialVersionUID = -4311064872711568128L;
+    private static final long serialVersionUID = -8411754817615693125L;
 
     // Atributos
     @Id
@@ -25,20 +25,21 @@ public class DosisMedicamento implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idProgramacionMedicamento", nullable = false)
-    private Long idProgramacionMedicamento;
-
-    @Column(name = "nroDosis")
-    private Long nroDosis;
-
-    @Column(name = "checkk")
-    private Long checkk;
+    @Column(name = "Checkk")
+    private Long Checkk;
 
     @Column(name = "fechaHora")
     private Date fechaHora;
 
+    @Column(name = "nroExamen")
+    private Long nroExamen;
+
+    @Column(name = "idProgramacionExamen", nullable = false)
+    private Long idProgramacionExamen;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProgramacionMedicamento", insertable = false, updatable = false)
-    private ProgramacionMedicamento programacionMedicamento;
+    @JoinColumn(name = "idProgramacionExamen", insertable = false, updatable = false)
+    private ProgramacionExamen programacionExamen;
+
 }

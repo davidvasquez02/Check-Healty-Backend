@@ -11,16 +11,16 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProgramacionMedicamentoDTO implements Serializable {
+public class ProgramacionExamenDTO implements Serializable {
 
     private static final long serialVersionUID = 4849355378588405119L;
 
     private Long id;
 
     @NotNull
-    private Long idMedicamentoUsuario;
+    private Long idExamenUsuario;
 
-    private String nombreMedicamentoUsuario;
+    private String nombreExamenUsuario;
 
     @NotNull
     private Long idTipoFrecuencia;
@@ -28,14 +28,17 @@ public class ProgramacionMedicamentoDTO implements Serializable {
     private String nombreTipoFrecuencia;
 
     @NotNull
-    private Long idTipoDosis;
+    private Long idTipoMedida;
 
-    private String nombreTipoDosis;
-
-    private String dosis;
+    private String nombreTipoMedida;
 
     private String frecuencia;
 
     private Date fechaInicio;
 
+    private String medidaMax;
+
+    private String medidaMin;
+
 }
+

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExamenUsuario implements Serializable {
+public class ExamenEnfermedad implements Serializable {
 
     private static final long serialVersionUID = -6654667925134342260L;
 
@@ -25,17 +25,22 @@ public class ExamenUsuario implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "idEnfermedad", nullable = false)
+    private Long idEnfermedad;
 
-
-    @Column(name = "idEnfermedadUsuario", nullable = false)
-    private Long idEnfermedadUsuario;
+    @Column(name = "idExamen", nullable = false)
+    private Long idExamen;
 
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEnfermedadUsuario", insertable = false, updatable = false)
-    private EnfermedadUsuario enfermedadUsuario;
+    @JoinColumn(name = "idEnfermedad", insertable = false, updatable = false)
+    private Enfermedad enfermedad;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idExamen", insertable = false, updatable = false)
+    private Examen examen;
 
 }
+

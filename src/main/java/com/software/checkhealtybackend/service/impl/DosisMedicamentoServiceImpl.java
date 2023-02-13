@@ -38,7 +38,7 @@ public class DosisMedicamentoServiceImpl implements IDosisMedicamentoService {
 
 
     @Autowired
-    public void setTipRepository(IDosisMedicamentoRepository dosisMedicamentoRepository){
+    public void setDosisMedicamentoRepository(IDosisMedicamentoRepository dosisMedicamentoRepository){
         this.dosisMedicamentoRepository = dosisMedicamentoRepository;
     }
 }

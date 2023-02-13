@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicamentoEnfermedad {
+public class MedicamentoEnfermedad implements Serializable {
 
     private static final long serialVersionUID = -4574411818745733865L;
 
