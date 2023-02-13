@@ -38,7 +38,7 @@ public class ProgramacionMedicamentoServiceImpl implements IProgramacionMedicame
 
 
     @Autowired
-    public void setTipRepository(IProgramacionMedicamentoRepository programacionMedicamentoRepository){
+    public void setProgramacionMedicamentoRepository(IProgramacionMedicamentoRepository programacionMedicamentoRepository){
         this.programacionMedicamentoRepository = programacionMedicamentoRepository;
     }
 }

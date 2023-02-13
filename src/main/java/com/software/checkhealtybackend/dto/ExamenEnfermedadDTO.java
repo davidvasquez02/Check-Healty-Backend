@@ -10,15 +10,20 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ExamenUsuarioDTO implements Serializable {
+public class ExamenEnfermedadDTO implements Serializable {
 
     private static final long serialVersionUID = 2113315265843739418L;
 
     private Long id;
 
-    private String nombre;
+    @NotNull
+    private Long idEnfermedad;
+
+    private String nombreEnfermedad;
 
     @NotNull
-    private Long idEnfermedadUsuario;
+    private Long idExamen;
+
+    private String nombreExamen;
 
 }

@@ -38,7 +38,7 @@ public class TipoMedidaServiceImpl implements ITipoMedidaService {
 
 
     @Autowired
-    public void setTipRepository(ITipoMedidaRepository tipoMedidaRepository){
+    public void setTipoMedidaRepository(ITipoMedidaRepository tipoMedidaRepository){
         this.tipoMedidaRepository = tipoMedidaRepository;
     }
 }

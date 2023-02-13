@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoFrecuencia {
+public class TipoFrecuencia implements Serializable {
 
     private static final long serialVersionUID = 3728917644972383461L;
 

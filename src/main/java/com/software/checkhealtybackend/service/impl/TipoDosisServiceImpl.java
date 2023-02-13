@@ -38,7 +38,7 @@ public class TipoDosisServiceImpl implements ITipoDosisService {
 
 
     @Autowired
-    public void setTipRepository(ITipoDosisRepository tipoDosisRepository){
+    public void setTipoDosisRepository(ITipoDosisRepository tipoDosisRepository){
         this.tipoDosisRepository = tipoDosisRepository;
     }
 }

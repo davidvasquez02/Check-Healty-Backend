@@ -38,7 +38,7 @@ public class TipoFrecuenciaServiceImpl implements ITipoFrecuenciaService {
 
 
     @Autowired
-    public void setTipRepository(ITipoFrecuenciaRepository tipoFrecuenciaRepository){
+    public void setTipoFrecuenciaRepository(ITipoFrecuenciaRepository tipoFrecuenciaRepository){
         this.tipoFrecuenciaRepository = tipoFrecuenciaRepository;
     }
 }
