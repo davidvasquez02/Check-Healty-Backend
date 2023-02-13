@@ -7,15 +7,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnfermedadUsuario {
+public class InformacionUsuario {
 
-    private static final long serialVersionUID = -155748995665269517L;
+    private static final long serialVersionUID = 2910707941688707910L;
 
     // Atributos
     @Id
@@ -26,20 +27,17 @@ public class EnfermedadUsuario {
     @Column(name = "idUsuario", nullable = false)
     private Long idUsuario;
 
-    @Column(name = "idEnfermedad", nullable = false)
-    private Long idEnfermedad;
+    @Column(name = "alturaMt")
+    private String alturaMt;
 
-    @Column(name = "padece")
-    private Long padece;
+    @Column(name = "pesoKg")
+    private String pesoKg;
+
+    @Column(name = "fechaNacimiento")
+    private Date fechaNacimiento;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
     private Usuario usuario;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEnfermedad", insertable = false, updatable = false)
-    private Enfermedad enfermedad;
-
 }

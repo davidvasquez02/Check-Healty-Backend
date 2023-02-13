@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnfermedadUsuario {
+public class MedicamentoEnfermedad {
 
-    private static final long serialVersionUID = -155748995665269517L;
+    private static final long serialVersionUID = -4574411818745733865L;
 
     // Atributos
     @Id
@@ -23,23 +23,19 @@ public class EnfermedadUsuario {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idUsuario", nullable = false)
-    private Long idUsuario;
+    @Column(name = "idMedicamento", nullable = false)
+    private Long idMedicamento;
 
     @Column(name = "idEnfermedad", nullable = false)
     private Long idEnfermedad;
 
-    @Column(name = "padece")
-    private Long padece;
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "idMedicamento", insertable = false, updatable = false)
+    private Medicamento medicamento;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idEnfermedad", insertable = false, updatable = false)
     private Enfermedad enfermedad;
-
 }
