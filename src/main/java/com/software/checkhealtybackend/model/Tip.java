@@ -20,18 +20,18 @@ public class Tip {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "ID_ENFERMEDAD")
+    @Column(name = "idEnfermedad")
     private Long idEnfermedad;
 
-    @Column(name = "CORREO", nullable = false)
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_ENFERMEDAD", insertable = false, updatable = false)
+    @JoinColumn(name = "idEnfermedad", insertable = false, updatable = false)
     private Enfermedad enfermedad;
 }

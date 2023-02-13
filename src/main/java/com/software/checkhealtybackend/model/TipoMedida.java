@@ -13,9 +13,9 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Medicamento implements Serializable {
+public class TipoMedida implements Serializable {
 
-    private static final long serialVersionUID = -4230765974862803057L;
+    private static final long serialVersionUID = 7603655735001791419L;
 
     // Atributos
     @Id
@@ -25,4 +25,7 @@ public class Medicamento implements Serializable {
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(name = "multiplicador")
+    private String multiplicador;
 }

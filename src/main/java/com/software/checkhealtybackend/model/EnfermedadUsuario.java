@@ -20,23 +20,23 @@ public class EnfermedadUsuario {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "ID_USUARIO", nullable = false)
+    @Column(name = "idUsuario", nullable = false)
     private Long idUsuario;
 
-    @Column(name = "ID_ENFERMEDAD", nullable = false)
+    @Column(name = "idEnfermedad", nullable = false)
     private Long idEnfermedad;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_USUARIO", insertable = false, updatable = false)
+    @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
     private Usuario usuario;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_ENFERMEDAD", insertable = false, updatable = false)
+    @JoinColumn(name = "idEnfermedad", insertable = false, updatable = false)
     private Enfermedad enfermedad;
 
 }

@@ -1,6 +1,5 @@
 package com.software.checkhealtybackend.dto;
 
-
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,23 +10,15 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UsuarioDTO implements Serializable {
+public class TipoMedidaDTO implements Serializable {
 
-    private static final long serialVersionUID = 7063908162015284504L;
+    private static final long serialVersionUID = 8302515053321531858L;
 
     private Long id;
 
     @NotNull
     private String nombre;
 
-    @NotNull
-    private String correo;
+    private String multiplicador;
 
-    @NotNull
-    private String contraseña;
-
-    private Long img;
-
-    @NotNull
-    private String username;
 }

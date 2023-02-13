@@ -20,9 +20,9 @@ public class Enfermedad implements Serializable {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "NOMBRE", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 }

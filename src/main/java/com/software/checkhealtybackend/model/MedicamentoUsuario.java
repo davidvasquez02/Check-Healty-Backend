@@ -7,16 +7,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Examen implements Serializable {
+public class MedicamentoUsuario {
 
-    private static final long serialVersionUID = 7679317508526942552L;
+    private static final long serialVersionUID = -7559914281691945367L;
 
     // Atributos
     @Id
@@ -24,17 +23,14 @@ public class Examen implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "idEnfermedadUsuario", nullable = false)
+    private Long idEnfermedadUsuario;
+
+    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "medida")
-    private String medida;
-
-    @Column(name = "idTipoMedida", nullable = false)
-    private Long idTipoMedida;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTipoMedida", insertable = false, updatable = false)
-    private Usuario tipoMedida;
+    @JoinColumn(name = "idEnfermedadUsuario", insertable = false, updatable = false)
+    private EnfermedadUsuario enfermedadUsuario;
 }
