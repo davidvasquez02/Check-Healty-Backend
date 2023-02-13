@@ -6,16 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Medicamento implements Serializable {
+public class TipoFrecuencia {
 
-    private static final long serialVersionUID = -4230765974862803057L;
+    private static final long serialVersionUID = 3728917644972383461L;
 
     // Atributos
     @Id
@@ -25,4 +24,7 @@ public class Medicamento implements Serializable {
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @Column(name = "multiplicador")
+    private String multiplicador;
 }
