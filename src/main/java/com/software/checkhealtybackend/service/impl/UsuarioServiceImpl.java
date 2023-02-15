@@ -39,8 +39,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     //Inicio de sesion
     @Override
     @Transactional
-    public Boolean sesionUsuario(String aUser, String aContraseña){
-        return !this.usuarioRepository.sesionUsuario(aUser, aContraseña).isEmpty();
+    public Long sesionUsuario(String aUser, String aContraseña){
+        return this.usuarioRepository.sesionUsuario(aUser, aContraseña).getId();
     }
 
 

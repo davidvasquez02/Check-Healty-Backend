@@ -14,7 +14,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
     @Query("SELECT u FROM Usuario u " +
             " WHERE u.username =:aUser " +
             " AND u.contraseña <=:aContraseña ")
-    List<Usuario> sesionUsuario(String aUser, String aContraseña);
+    Usuario sesionUsuario(String aUser, String aContraseña);
 
 
     /**Verifica que NO exista usuario con el username**/
