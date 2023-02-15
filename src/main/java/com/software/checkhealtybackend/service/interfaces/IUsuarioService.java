@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.service.interfaces;
 
+import com.software.checkhealtybackend.dto.UsuarioDTO;
 import com.software.checkhealtybackend.model.Usuario;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +9,7 @@ public interface IUsuarioService {
 
     Usuario findById (Long aId);
 
-    Usuario createUsuario(Usuario aUsuario);
+    UsuarioDTO createUsuario(UsuarioDTO aUsuario);
 
     Usuario updateUsuario(Usuario aUsuario);
 

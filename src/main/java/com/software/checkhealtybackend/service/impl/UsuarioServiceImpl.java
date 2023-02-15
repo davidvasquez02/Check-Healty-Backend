@@ -1,6 +1,11 @@
 package com.software.checkhealtybackend.service.impl;
 
+import com.software.checkhealtybackend.dto.UsuarioDTO;
+import com.software.checkhealtybackend.mappers.UsuarioMapper;
+import com.software.checkhealtybackend.model.EnfermedadUsuario;
+import com.software.checkhealtybackend.model.InformacionUsuario;
 import com.software.checkhealtybackend.model.Usuario;
+import com.software.checkhealtybackend.repository.IInformacionUsuarioRepository;
 import com.software.checkhealtybackend.repository.IUsuarioRepository;
 import com.software.checkhealtybackend.service.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     private IUsuarioRepository usuarioRepository;
 
+    private IInformacionUsuarioRepository informacionUsuarioRepository;
+
 
     @Override
     public Usuario findById(Long aId) {
@@ -20,8 +27,25 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     @Transactional
-    public Usuario createUsuario(Usuario aUsuario){
-        if(usuarioSimilar(aUsuario.getUsername())){return this.usuarioRepository.save(aUsuario);}else{return null;}
+    public UsuarioDTO createUsuario(UsuarioDTO aUsuario){
+        if(usuarioSimilar(aUsuario.getUsername())){
+            Usuario userSaved = usuarioRepository.save(UsuarioMapper.INSTANCE.toUsuario(aUsuario));
+
+            //Guardado InformacionUsuario
+            InformacionUsuario informacionUsuario = new InformacionUsuario();
+            informacionUsuario.setIdUsuario(userSaved.getId());
+            informacionUsuario.setAlturaMt(aUsuario.getAlturaMt());
+            informacionUsuario.setPesoKg(aUsuario.getPesoKg());
+            informacionUsuario.setFechaNacimiento(aUsuario.getFechaNacimiento());
+
+            //Guardado EnfermedadUsuario
+            EnfermedadUsuario enfermedadUsuario = new EnfermedadUsuario();
+            enfermedadUsuario.setIdUsuario(userSaved.getId());
+            enfermedadUsuario.setIdEnfermedad(aUsuario.getIdEnfermedad());
+            enfermedadUsuario.setPadece(aUsuario.getPadece());
+
+            return aUsuario;
+        }else{return null;}
     }
 
     @Override
@@ -55,5 +79,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     public void setUsuarioRepository(IUsuarioRepository usuarioRepository){
         this.usuarioRepository = usuarioRepository;
+    }
+
+    @Autowired
+    public void setInformacionUsuarioRepository(IInformacionUsuarioRepository informacionUsuarioRepository){
+        this.informacionUsuarioRepository = informacionUsuarioRepository;
     }
 }

@@ -32,7 +32,7 @@ public class EnfermedadUsuario implements Serializable {
     private Long idEnfermedad;
 
     @Column(name = "padece")
-    private Long padece;
+    private Boolean padece;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

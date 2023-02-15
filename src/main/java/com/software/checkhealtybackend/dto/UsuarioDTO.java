@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -30,4 +31,24 @@ public class UsuarioDTO implements Serializable {
 
     @NotNull
     private String username;
+
+
+    //Informacion usuario
+
+    private String alturaMt;
+
+    private String pesoKg;
+
+    private Date fechaNacimiento;
+
+    //Enfermedad Usuario
+
+    @NotNull
+    private Long idEnfermedad;
+
+    private String nombreUsuario;
+
+    private String nombreEnfermedad;
+
+    private Boolean padece;
 }
