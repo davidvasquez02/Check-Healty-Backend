@@ -5,6 +5,7 @@ import com.software.checkhealtybackend.mappers.UsuarioMapper;
 import com.software.checkhealtybackend.model.EnfermedadUsuario;
 import com.software.checkhealtybackend.model.InformacionUsuario;
 import com.software.checkhealtybackend.model.Usuario;
+import com.software.checkhealtybackend.repository.IEnfermedadUsuarioRepository;
 import com.software.checkhealtybackend.repository.IInformacionUsuarioRepository;
 import com.software.checkhealtybackend.repository.IUsuarioRepository;
 import com.software.checkhealtybackend.service.interfaces.IUsuarioService;
@@ -18,6 +19,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private IUsuarioRepository usuarioRepository;
 
     private IInformacionUsuarioRepository informacionUsuarioRepository;
+
+    private IEnfermedadUsuarioRepository enfermedadUsuarioRepository;
 
 
     @Override
@@ -37,12 +40,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
             informacionUsuario.setAlturaMt(aUsuario.getAlturaMt());
             informacionUsuario.setPesoKg(aUsuario.getPesoKg());
             informacionUsuario.setFechaNacimiento(aUsuario.getFechaNacimiento());
+            informacionUsuarioRepository.save(informacionUsuario);
 
             //Guardado EnfermedadUsuario
             EnfermedadUsuario enfermedadUsuario = new EnfermedadUsuario();
             enfermedadUsuario.setIdUsuario(userSaved.getId());
             enfermedadUsuario.setIdEnfermedad(aUsuario.getIdEnfermedad());
             enfermedadUsuario.setPadece(aUsuario.getPadece());
+            enfermedadUsuarioRepository.save(enfermedadUsuario);
 
             return aUsuario;
         }else{return null;}
@@ -84,5 +89,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     public void setInformacionUsuarioRepository(IInformacionUsuarioRepository informacionUsuarioRepository){
         this.informacionUsuarioRepository = informacionUsuarioRepository;
+    }
+
+    @Autowired
+    public void setEnfermedadUsuarioRepository(IEnfermedadUsuarioRepository enfermedadUsuarioRepository){
+        this.enfermedadUsuarioRepository = enfermedadUsuarioRepository;
     }
 }
