@@ -35,6 +35,6 @@ public class Usuario implements Serializable {
     private String username;
 
     @Column(name = "Img")
-    private Long img;
+    private String img;
 
 }
