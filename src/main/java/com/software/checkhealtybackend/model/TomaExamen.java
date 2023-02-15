@@ -26,7 +26,7 @@ public class TomaExamen implements Serializable {
     private Long id;
 
     @Column(name = "Checkk")
-    private Long Checkk;
+    private Boolean checkk;
 
     @Column(name = "fechaHora")
     private Date fechaHora;

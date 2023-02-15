@@ -8,6 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/tomaExamen")
@@ -38,6 +42,24 @@ public class TomaExamenController {
     public ResponseEntity<Boolean> deleteTomaExamen(@PathVariable(value = "id") Long aId) {
         this.tomaExamenService.deleteTomaExamen(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+
+    //TomasExamen realizadas
+    @GetMapping("/tomasExamenRealizadas")
+    public ResponseEntity <List<TomaExamenDTO>> findTomaExamenByCheck(@RequestParam(name = "idUsuario") Long User,
+                                                                      @RequestParam(name = "fechaDesde", required = false) Date aFechaDesde,
+                                                                      @RequestParam(name = "fechaHasta", required = false) Date aFechaHasta,
+                                                                      @RequestParam(name = "checkk", required = false) Boolean aCheck) {
+        var listaTomaExamen = this.tomaExamenService.findTomaExamenByCheck(User, aFechaDesde, aFechaHasta, aCheck);
+        return new ResponseEntity<>(listaTomaExamen.stream().map(TomaExamenMapper.INSTANCE::toTomaExamenDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    //TomasExamen según idUsuario
+    @GetMapping("/all")
+    public ResponseEntity <List<TomaExamenDTO>> findAllByIdUser(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+        var listTomaExamen = this.tomaExamenService.findAllByUser(aIdUser);
+        return new ResponseEntity<>(listTomaExamen.stream().map(TomaExamenMapper.INSTANCE::toTomaExamenDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 

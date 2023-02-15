@@ -10,21 +10,21 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class NotificacionDTO implements Serializable {
+public class TopicoDTO implements Serializable {
 
-    private static final long serialVersionUID = 4278556079153861757L;
+    private static final long serialVersionUID = 1805929604137148136L;
 
     private Long id;
 
     @NotNull
-    private Long idUsuario;
+    private Long idSeccionForo;
 
-    private String nombreUsuario;
+    private String nombreSeccionForo;
 
-    private String titulo;
+    @NotNull
+    private String nombre;
 
+    @NotNull
     private String descripcion;
-
-    private Boolean leida;
 
 }

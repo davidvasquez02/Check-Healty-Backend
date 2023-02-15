@@ -32,7 +32,7 @@ public class DosisMedicamento implements Serializable {
     private Long nroDosis;
 
     @Column(name = "checkk")
-    private Long checkk;
+    private Boolean checkk;
 
     @Column(name = "fechaHora")
     private Date fechaHora;

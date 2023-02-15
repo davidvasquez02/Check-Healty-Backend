@@ -13,4 +13,7 @@ public interface IUsuarioService {
     Usuario updateUsuario(Usuario aUsuario);
 
     void deleteUsuario(Long aId);
+
+    Long sesionUsuario(String aUser, String aContraseña);
+
 }

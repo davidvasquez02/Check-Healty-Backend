@@ -20,7 +20,7 @@ public class TomaExamenDTO implements Serializable {
     @NotNull
     private Long idProgramacionExamen;
 
-    private Long Checkk;
+    private Boolean Checkk;
 
     private Long nroExamen;
 

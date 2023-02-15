@@ -14,9 +14,9 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Notificacion implements Serializable {
+public class Publicacion implements Serializable {
 
-    private static final long serialVersionUID = -6130880334201964181L;
+    private static final long serialVersionUID = 5584865421051516335L;
 
     // Atributos
     @Id
@@ -24,17 +24,25 @@ public class Notificacion implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "idTopico", nullable = false)
+    private Long idTopico;
+
     @Column(name = "idUsuario", nullable = false)
     private Long idUsuario;
 
     @Column(name = "titulo")
     private String titulo;
 
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "contenido")
+    private String contenido;
 
-    @Column(name = "leida")
-    private Boolean leida;
+    @Column(name = "Img")
+    private Long img;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTopico", insertable = false, updatable = false)
+    private Topico topico;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

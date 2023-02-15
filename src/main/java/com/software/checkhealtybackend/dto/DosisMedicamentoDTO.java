@@ -22,7 +22,7 @@ public class DosisMedicamentoDTO implements Serializable {
 
     private Long nroDosis;
 
-    private Long checkk;
+    private Boolean checkk;
 
     private Date fechaHora;
 

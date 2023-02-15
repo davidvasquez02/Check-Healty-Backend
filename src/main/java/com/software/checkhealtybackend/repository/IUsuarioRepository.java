@@ -2,9 +2,24 @@ package com.software.checkhealtybackend.repository;
 
 import com.software.checkhealtybackend.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
+
+    /**Verifica que exista usuario con el username y contraseña solicitada**/
+    @Query("SELECT u FROM Usuario u " +
+            " WHERE u.username =:aUser " +
+            " AND u.contraseña <=:aContraseña ")
+    Usuario sesionUsuario(String aUser, String aContraseña);
+
+
+    /**Verifica que NO exista usuario con el username**/
+    @Query("SELECT u FROM Usuario u " +
+            " WHERE u.username =:aUser " )
+    List<Usuario>usuarioSimilar(String aUser);
 
 }

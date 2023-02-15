@@ -21,7 +21,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     @Transactional
     public Usuario createUsuario(Usuario aUsuario){
-        return this.usuarioRepository.save(aUsuario);
+        if(usuarioSimilar(aUsuario.getUsername())){return this.usuarioRepository.save(aUsuario);}else{return null;}
     }
 
     @Override
@@ -34,6 +34,21 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Transactional
     public void deleteUsuario(Long aId) {
         this.usuarioRepository.deleteById(aId);
+    }
+
+    //Inicio de sesion
+    @Override
+    @Transactional
+    public Long sesionUsuario(String aUser, String aContraseña){
+        return this.usuarioRepository.sesionUsuario(aUser, aContraseña).getId();
+    }
+
+
+    //Verificar usuarios similares
+
+    @Transactional
+    public Boolean usuarioSimilar(String aUser){
+        return this.usuarioRepository.usuarioSimilar(aUser).isEmpty();
     }
 
 

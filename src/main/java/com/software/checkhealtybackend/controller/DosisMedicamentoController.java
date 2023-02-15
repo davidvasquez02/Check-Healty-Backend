@@ -1,12 +1,18 @@
 package com.software.checkhealtybackend.controller;
 
 import com.software.checkhealtybackend.dto.DosisMedicamentoDTO;
+import com.software.checkhealtybackend.dto.DosisMedicamentoDTO;
+import com.software.checkhealtybackend.mappers.DosisMedicamentoMapper;
 import com.software.checkhealtybackend.mappers.DosisMedicamentoMapper;
 import com.software.checkhealtybackend.service.interfaces.IDosisMedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin("*")
@@ -38,6 +44,23 @@ public class DosisMedicamentoController {
     public ResponseEntity<Boolean> deleteDosisMedicamento(@PathVariable(value = "id") Long aId) {
         this.dosisMedicamentoService.deleteDosisMedicamento(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    //DosisMedicamento realizadas
+    @GetMapping("/dosisMedicamentoRealizadas")
+    public ResponseEntity <List<DosisMedicamentoDTO>> findDosisMedicamentoByCheck(@RequestParam(name = "idUsuario") Long User,
+                                                                      @RequestParam(name = "fechaDesde", required = false) Date aFechaDesde,
+                                                                      @RequestParam(name = "fechaHasta", required = false) Date aFechaHasta,
+                                                                      @RequestParam(name = "checkk", required = false) Boolean aCheck) {
+        var listaDosisMedicamento = this.dosisMedicamentoService.findDosisMedicamentoByCheck(User, aFechaDesde, aFechaHasta, aCheck);
+        return new ResponseEntity<>(listaDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    //DosisMedicamento según idUsuario
+    @GetMapping("/all")
+    public ResponseEntity <List<DosisMedicamentoDTO>> findAllByIdUser(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+        var listDosisMedicamento = this.dosisMedicamentoService.findAllByUser(aIdUser);
+        return new ResponseEntity<>(listDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 
