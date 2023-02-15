@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class TomaExamenServiceImpl implements ITomaExamenService {
 
@@ -34,6 +37,18 @@ public class TomaExamenServiceImpl implements ITomaExamenService {
     @Transactional
     public void deleteTomaExamen(Long aId) {
         this.tomaExamenRepository.deleteById(aId);
+    }
+
+    @Override
+    @Transactional
+    public List<TomaExamen> findTomaExamenByCheck(Long aIdUser, Date aFechaDesde, Date aFechaHasta, Boolean aCheck){
+        return this.tomaExamenRepository.findTomaExamenByCheck(aIdUser, aFechaDesde, aFechaHasta, aCheck);
+    }
+
+    @Override
+    @Transactional
+    public List<TomaExamen> findAllByUser(Long aIdUser){
+        return this.tomaExamenRepository.findTomaExamenByUser(aIdUser);
     }
 
 

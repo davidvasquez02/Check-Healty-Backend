@@ -4,9 +4,13 @@ import com.software.checkhealtybackend.dto.UsuarioDTO;
 import com.software.checkhealtybackend.mappers.UsuarioMapper;
 import com.software.checkhealtybackend.service.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 @RestController
 @CrossOrigin("*")
@@ -37,6 +41,13 @@ public class UsuarioController {
     public ResponseEntity<Boolean> deleteUsuario(@PathVariable(value = "id") Long aId) {
         this.usuarioService.deleteUsuario(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    //Inicio de sesion
+    @GetMapping("/inicioSesion")
+    public ResponseEntity<Boolean> sesionUsuario(@RequestParam(name = "user") String aUser,
+                                                 @RequestParam(value = "contraseña") String aContraseña) {
+        return new ResponseEntity<>(this.usuarioService.sesionUsuario(aUser,aContraseña), HttpStatus.OK);
     }
 
 
