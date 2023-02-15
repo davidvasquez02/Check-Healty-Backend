@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "examen", schema = "checkhealthdb")
 public class Examen implements Serializable {
 
     private static final long serialVersionUID = 7679317508526942552L;
