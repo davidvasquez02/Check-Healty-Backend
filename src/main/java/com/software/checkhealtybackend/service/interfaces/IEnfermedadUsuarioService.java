@@ -3,6 +3,8 @@ package com.software.checkhealtybackend.service.interfaces;
 import com.software.checkhealtybackend.model.EnfermedadUsuario;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface IEnfermedadUsuarioService {
 
@@ -13,4 +15,6 @@ public interface IEnfermedadUsuarioService {
     EnfermedadUsuario updateEnfermedadUsuario(EnfermedadUsuario aEnfermedadUsuario);
 
     void deleteEnfermedadUsuario(Long aId);
+
+    List<EnfermedadUsuario> findByIdUser(Long aIdUser);
 }

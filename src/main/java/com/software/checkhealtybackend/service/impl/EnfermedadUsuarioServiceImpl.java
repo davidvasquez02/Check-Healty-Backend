@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class EnfermedadUsuarioServiceImpl implements IEnfermedadUsuarioService {
 
@@ -35,6 +37,14 @@ public class EnfermedadUsuarioServiceImpl implements IEnfermedadUsuarioService {
     public void deleteEnfermedadUsuario(Long aId) {
         this.enfermedadUsuarioRepository.deleteById(aId);
     }
+
+    //Lista EnfermedadUsuario by idUser
+    @Override
+    @Transactional
+    public List<EnfermedadUsuario> findByIdUser(Long aIdUser) {
+        return this.enfermedadUsuarioRepository.findByIdUser(aIdUser);
+    }
+
 
 
     @Autowired

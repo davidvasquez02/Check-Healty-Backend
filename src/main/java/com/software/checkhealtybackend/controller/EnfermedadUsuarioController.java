@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/enfermedadUsuario")
@@ -38,6 +41,13 @@ public class EnfermedadUsuarioController {
     public ResponseEntity<Boolean> deleteEnfermedadUsuario(@PathVariable(value = "id") Long aId) {
         this.enfermedadUsuarioService.deleteEnfermedadUsuario(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    //Lista EnfermedadUsuario by idUser
+    @GetMapping("/allByUser/{idUser}")
+    public ResponseEntity <List<EnfermedadUsuarioDTO>> findByIdUser(@PathVariable(value = "idUser") Long aIdUser) {
+        var listEnfermedadUsuario = this.enfermedadUsuarioService.findByIdUser(aIdUser);
+        return new ResponseEntity<>(listEnfermedadUsuario.stream().map(EnfermedadUsuarioMapper.INSTANCE::toEnfermedadUsuarioDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 
