@@ -15,6 +15,10 @@ public interface ExamenUsuarioMapper {
     ExamenUsuario toExamenUsuario(ExamenUsuarioDTO aExamenUsuarioDTO);
 
     //Entity to DTO
-    @Mapping(target = "idEnfermedadUsuario", source = "enfermedadUsuario.id")
+    @Mapping(target = "idEnfermedadUsuario", source = "enfermedadUsuario.id") //ProgramacionExamen
+    @Mapping(target = "idTipoFrecuencia", source = "tipoFrecuencia.id")
+    @Mapping(target = "nombreTipoFrecuencia", source = "tipoFrecuencia.nombre")
+    @Mapping(target = "idTipoMedida", source = "tipoMedida.id")
+    @Mapping(target = "nombreTipoMedida", source = "tipoMedida.nombre")
     ExamenUsuarioDTO toExamenUsuarioDTO(ExamenUsuario aExamenUsuario);
 }

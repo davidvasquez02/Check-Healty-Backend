@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -34,4 +35,31 @@ public class MedicamentoUsuario implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idEnfermedadUsuario", insertable = false, updatable = false)
     private EnfermedadUsuario enfermedadUsuario;
+
+    //ProgramacioMedicamento
+
+    @Column(name = "idTipoFrecuencia", nullable = false)
+    private Long idTipoFrecuencia;
+
+    @Column(name = "idTipoDosis", nullable = false)
+    private Long idTipoDosis;
+
+    @Column(name = "dosis")
+    private String dosis;
+
+    @Column(name = "frecuencia")
+    private String frecuencia;
+
+    @Column(name = "fechaInicio")
+    private Date fechaInicio;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTipoFrecuencia", insertable = false, updatable = false)
+    private TipoFrecuencia tipoFrecuencia;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTipoDosis", insertable = false, updatable = false)
+    private TipoDosis tipoDosis;
 }
