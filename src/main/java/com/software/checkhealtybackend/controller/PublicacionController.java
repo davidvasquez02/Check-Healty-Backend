@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/publicacion")
@@ -15,6 +18,12 @@ public class PublicacionController {
 
     private IPublicacionService publicacionService;
 
+    //Obtiene la lista de las publicaciones por seccion y/o usuario
+    @GetMapping("/all")
+    public ResponseEntity<List<PublicacionDTO>> getAllPublicaciones(@RequestParam(name = "idSeccion",required = false)Long idSeccion,
+                                                                    @RequestParam(name = "idUsuario",required = false)Long idUsuario){
+        return new ResponseEntity<>(this.publicacionService.findAllPublicacion(idSeccion, idUsuario).stream().map(PublicacionMapper.INSTANCE::toPublicacionDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
 
     @GetMapping("/id/{id}")
     public ResponseEntity<PublicacionDTO> findById(@PathVariable(value = "id") Long aId) {

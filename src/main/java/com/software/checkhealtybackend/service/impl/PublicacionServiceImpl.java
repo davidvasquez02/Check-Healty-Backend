@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class PublicacionServiceImpl implements IPublicacionService {
 
@@ -17,6 +19,14 @@ public class PublicacionServiceImpl implements IPublicacionService {
     public Publicacion findById(Long aId) {
         return this.publicacionRepository.findById(aId).orElse(null);
     }
+
+
+    //Obtiene una lista de publicaciones
+    @Override
+    public List<Publicacion> findAllPublicacion(Long idSeccion, Long idUsuario){
+        return this.publicacionRepository.findAllByIdSeccionOrIdUsuario(idSeccion, idUsuario);
+    }
+
 
     @Override
     @Transactional

@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,18 +19,16 @@ public class PublicacionDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idTopico;
+    private Long idSeccionForo;
 
-    private String nombreTopico;
+    private String nombreSeccion;
 
     @NotNull
     private Long idUsuario;
 
     private String nombreUsuario;
-
-    private Long img;
-
-    private String titulo;
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
+    private Date fecha;
 
     private String contenido;
 

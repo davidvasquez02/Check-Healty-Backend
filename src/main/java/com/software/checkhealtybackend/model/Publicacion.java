@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -25,25 +26,23 @@ public class Publicacion implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idTopico", nullable = false)
-    private Long idTopico;
+    @Column(name = "idSeccionForo", nullable = false)
+    private Long idSeccionForo;
 
     @Column(name = "idUsuario", nullable = false)
     private Long idUsuario;
 
-    @Column(name = "titulo")
-    private String titulo;
-
     @Column(name = "contenido")
     private String contenido;
 
-    @Column(name = "Img")
-    private Long img;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTopico", insertable = false, updatable = false)
-    private Topico topico;
+    @JoinColumn(name = "idSeccionForo", insertable = false, updatable = false)
+    private SeccionForo seccionForo;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
