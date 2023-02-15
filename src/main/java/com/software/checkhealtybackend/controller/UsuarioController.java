@@ -45,9 +45,9 @@ public class UsuarioController {
 
     //Inicio de sesion
     @GetMapping("/inicioSesion")
-    public ResponseEntity<Long> sesionUsuario(@RequestParam(name = "user") String aUser,
-                                                 @RequestParam(value = "contraseña") String aContraseña) {
-        return new ResponseEntity<>(this.usuarioService.sesionUsuario(aUser,aContraseña), HttpStatus.OK);
+    public ResponseEntity<Long> sesionUsuario(@RequestParam(name = "correo") String aCorreo,
+                                              @RequestParam(value = "contraseña") String aContraseña) {
+        return new ResponseEntity<>(this.usuarioService.sesionUsuario(aCorreo,aContraseña), HttpStatus.OK);
     }
 
 
