@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/medicamento")
@@ -38,6 +41,14 @@ public class MedicamentoController {
         this.medicamentoService.deleteMedicamento(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
+
+    //Lista Medicamento by User
+    @GetMapping("/allByUser/{user}")
+    public ResponseEntity <List<MedicamentoDTO>> allByUser(@PathVariable(value = "user") Long aUser) {
+        var listMedicamento = this.medicamentoService.findAllByUser(aUser);
+        return new ResponseEntity<>(listMedicamento.stream().map(MedicamentoMapper.INSTANCE::toMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
 
     @Autowired
     public void setMedicamentoService(IMedicamentoService medicamentoService){

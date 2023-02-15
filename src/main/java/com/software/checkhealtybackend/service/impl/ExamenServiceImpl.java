@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ExamenServiceImpl implements IExamenService {
 
@@ -34,6 +36,12 @@ public class ExamenServiceImpl implements IExamenService {
     @Transactional
     public void deleteExamen(Long aId) {
         this.examenRepository.deleteById(aId);
+    }
+
+    @Override
+    @Transactional
+    public List<Examen> findAllByUser(Long aUser){
+        return this.examenRepository.allByUser(aUser);
     }
 
 

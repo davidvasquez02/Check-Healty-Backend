@@ -3,6 +3,8 @@ package com.software.checkhealtybackend.service.interfaces;
 import com.software.checkhealtybackend.model.Medicamento;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface IMedicamentoService {
 
@@ -13,4 +15,6 @@ public interface IMedicamentoService {
     Medicamento updateMedicamento(Medicamento aMedicamento);
 
     void deleteMedicamento(Long aId);
+
+    List<Medicamento> findAllByUser(Long aUser);
 }
