@@ -15,6 +15,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "medicamento_usuario", schema = "checkhealthdb")
 public class MedicamentoUsuario implements Serializable {
 
     private static final long serialVersionUID = -7559914281691945367L;
