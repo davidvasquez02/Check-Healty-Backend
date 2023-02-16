@@ -21,7 +21,7 @@ public class UsuarioDTO implements Serializable {
     @NotNull
     private String correo;
     @NotNull
-    private String contraseña;
+    private String contrasena;
     private String img;
 
 }

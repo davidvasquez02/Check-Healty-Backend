@@ -21,7 +21,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     @Transactional
     public Usuario createUsuario(Usuario aUsuario){
-        if(usuarioSimilar(aUsuario.getUsername())){return this.usuarioRepository.save(aUsuario);}else{return null;}
+        if(usuarioSimilar(aUsuario.getCorreo())){return this.usuarioRepository.save(aUsuario);}else{return null;}
     }
 
     @Override
