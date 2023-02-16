@@ -28,7 +28,7 @@ public interface IDosisMedicamentoRepository  extends JpaRepository<DosisMedicam
 
     /**Trae DosisMedicamento antes de la fecha actual segun idUsuario**/
     @Query("SELECT t FROM DosisMedicamento t " +
-            " WHERE ((t.medicamentoUsuario.enfermedadUsuario.id =:aIdUser) OR :aIdUser IS NULL) " +
+            " WHERE ((t.medicamentoUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) " +
             " AND (t.fechaHora <:date) OR :date IS NULL")
     List<DosisMedicamento> findAllBeforeCurrentDate(Long aIdUser, Date date);
 
