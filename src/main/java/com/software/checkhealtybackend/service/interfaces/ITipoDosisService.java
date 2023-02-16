@@ -3,6 +3,8 @@ package com.software.checkhealtybackend.service.interfaces;
 import com.software.checkhealtybackend.model.TipoDosis;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ITipoDosisService  {
 
@@ -13,4 +15,7 @@ public interface ITipoDosisService  {
     TipoDosis updateTipoDosis(TipoDosis aTipoDosis);
 
     void deleteTipoDosis(Long aId);
+
+    List<TipoDosis> findAll();
+
 }

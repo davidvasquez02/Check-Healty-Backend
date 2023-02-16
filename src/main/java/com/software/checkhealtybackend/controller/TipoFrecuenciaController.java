@@ -1,12 +1,17 @@
 package com.software.checkhealtybackend.controller;
 
 import com.software.checkhealtybackend.dto.TipoFrecuenciaDTO;
+import com.software.checkhealtybackend.dto.TipoFrecuenciaDTO;
+import com.software.checkhealtybackend.mappers.TipoFrecuenciaMapper;
 import com.software.checkhealtybackend.mappers.TipoFrecuenciaMapper;
 import com.software.checkhealtybackend.service.interfaces.ITipoFrecuenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin("*")
@@ -38,6 +43,13 @@ public class TipoFrecuenciaController {
     public ResponseEntity<Boolean> deleteTipoFrecuencia(@PathVariable(value = "id") Long aId) {
         this.tipoFrecuenciaService.deleteTipoFrecuencia(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    //Lista all TipoFrecuencia
+    @GetMapping("/all")
+    public ResponseEntity <List<TipoFrecuenciaDTO>> findByIdUser() {
+        var listTipoFrecuencia = this.tipoFrecuenciaService.findAll();
+        return new ResponseEntity<>(listTipoFrecuencia.stream().map(TipoFrecuenciaMapper.INSTANCE::toTipoFrecuenciaDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 

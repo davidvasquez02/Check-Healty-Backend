@@ -1,11 +1,14 @@
 package com.software.checkhealtybackend.service.impl;
 
 import com.software.checkhealtybackend.model.TipoFrecuencia;
+import com.software.checkhealtybackend.model.TipoFrecuencia;
 import com.software.checkhealtybackend.repository.ITipoFrecuenciaRepository;
 import com.software.checkhealtybackend.service.interfaces.ITipoFrecuenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class TipoFrecuenciaServiceImpl implements ITipoFrecuenciaService {
@@ -34,6 +37,13 @@ public class TipoFrecuenciaServiceImpl implements ITipoFrecuenciaService {
     @Transactional
     public void deleteTipoFrecuencia(Long aId) {
         this.tipoFrecuenciaRepository.deleteById(aId);
+    }
+
+    //Lista all TipoFrecuencia
+    @Override
+    @Transactional
+    public List<TipoFrecuencia> findAll(){
+        return this.tipoFrecuenciaRepository.findAll();
     }
 
 

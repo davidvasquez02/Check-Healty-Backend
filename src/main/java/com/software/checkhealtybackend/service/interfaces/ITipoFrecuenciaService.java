@@ -1,7 +1,10 @@
 package com.software.checkhealtybackend.service.interfaces;
 
+import com.software.checkhealtybackend.model.TipoDosis;
 import com.software.checkhealtybackend.model.TipoFrecuencia;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface ITipoFrecuenciaService {
@@ -13,4 +16,6 @@ public interface ITipoFrecuenciaService {
     TipoFrecuencia updateTipoFrecuencia(TipoFrecuencia aTipoFrecuencia);
 
     void deleteTipoFrecuencia(Long aId);
+
+    List<TipoFrecuencia> findAll();
 }

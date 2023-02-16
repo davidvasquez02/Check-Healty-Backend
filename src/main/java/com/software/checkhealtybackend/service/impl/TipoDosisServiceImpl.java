@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class TipoDosisServiceImpl implements ITipoDosisService {
 
@@ -36,6 +38,13 @@ public class TipoDosisServiceImpl implements ITipoDosisService {
         this.tipoDosisRepository.deleteById(aId);
     }
 
+
+    //Lista all TipoDosis
+    @Override
+    @Transactional
+    public List<TipoDosis> findAll(){
+        return this.tipoDosisRepository.findAll();
+    }
 
     @Autowired
     public void setTipoDosisRepository(ITipoDosisRepository tipoDosisRepository){
