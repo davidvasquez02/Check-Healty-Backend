@@ -1,7 +1,6 @@
 package com.software.checkhealtybackend.service.interfaces;
 
 import com.software.checkhealtybackend.model.DosisMedicamento;
-import com.software.checkhealtybackend.model.DosisMedicamento;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,4 +22,6 @@ public interface IDosisMedicamentoService {
     List<DosisMedicamento> findAllByUser(Long aIdUser);
 
     List<List<List<String>>> findEstadistica (Long aIdUser);
+
+    List<DosisMedicamento> findAllBeforeCurrentDate(Long aIdUser);
 }
