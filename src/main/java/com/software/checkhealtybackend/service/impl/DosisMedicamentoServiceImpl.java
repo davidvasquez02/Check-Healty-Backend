@@ -1,7 +1,6 @@
 package com.software.checkhealtybackend.service.impl;
 
 import com.software.checkhealtybackend.model.DosisMedicamento;
-import com.software.checkhealtybackend.model.DosisMedicamento;
 import com.software.checkhealtybackend.repository.IDosisMedicamentoRepository;
 import com.software.checkhealtybackend.service.interfaces.IDosisMedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,6 +116,14 @@ public class DosisMedicamentoServiceImpl implements IDosisMedicamentoService {
 
         return listAll;
     }
+
+    @Override
+    @Transactional
+    public List<DosisMedicamento> findAllBeforeCurrentDate(Long aIdUser){
+        Date date = new Date();
+        return this.dosisMedicamentoRepository.findAllBeforeCurrentDate(aIdUser, date);
+    }
+
 
     @Override
     @Transactional
