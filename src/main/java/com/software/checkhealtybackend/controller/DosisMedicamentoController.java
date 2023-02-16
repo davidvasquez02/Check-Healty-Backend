@@ -73,7 +73,7 @@ public class DosisMedicamentoController {
 
     //DosisMedicamento antes de según idUsuario
     @GetMapping("/allBefore")
-    public ResponseEntity <List<DosisMedicamentoDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+    public ResponseEntity <List<DosisMedicamentoDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUserEn", required = false) Long aIdUser) {
         var listDosisMedicamento = this.dosisMedicamentoService.findAllBeforeCurrentDate(aIdUser);
         return new ResponseEntity<>(listDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
     }

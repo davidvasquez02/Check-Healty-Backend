@@ -66,7 +66,7 @@ public class TomaExamenController {
 
     //DosisMedicamento antes de según idUsuario
     @GetMapping("/allBefore")
-    public ResponseEntity <List<TomaExamenDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+    public ResponseEntity <List<TomaExamenDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUserEn", required = false) Long aIdUser) {
         var listDosisMedicamento = this.tomaExamenService.findAllBeforeCurrentDate(aIdUser);
         return new ResponseEntity<>(listDosisMedicamento.stream().map(TomaExamenMapper.INSTANCE::toTomaExamenDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
