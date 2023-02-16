@@ -30,7 +30,7 @@ public interface ITomaExamenRepository extends JpaRepository<TomaExamen, Long> {
 
     /**Trae tomaExamenes antes de la fecha actual segun idUsuario**/
     @Query("SELECT t FROM TomaExamen t " +
-            " WHERE ((t.examenUsuario.enfermedadUsuario.id =:aIdUser) OR :aIdUser IS NULL) " +
+            " WHERE ((t.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) " +
             " AND (t.fechaHora <:date) OR :date IS NULL")
     List<TomaExamen> findAllBeforeCurrentDate(Long aIdUser, Date date);
 }
