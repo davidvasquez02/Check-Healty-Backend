@@ -24,4 +24,7 @@ public class Token implements Serializable {
     @Column(name = "token")
     private String token;
 
+    @Column(name = "user")
+    private Long user;
+
 }

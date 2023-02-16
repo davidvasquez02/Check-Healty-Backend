@@ -59,9 +59,10 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> sesionUsuario(@RequestParam(name = "correo") String aCorreo,
                                                     @RequestParam(value = "contraseña") String aContraseña,
                                                     @RequestParam String token) {
-        Token token1 = tokenRepository.save(new Token(1,token));
         var valid = this.usuarioService.sesionUsuario(aCorreo,aContraseña);
-        return new ResponseEntity<>(UsuarioMapper.INSTANCE.toUsuarioDTO(valid), HttpStatus.OK);
+        UsuarioDTO response =UsuarioMapper.INSTANCE.toUsuarioDTO(valid);
+        Token token1 = tokenRepository.save(new Token(1,token,response.getId()));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
