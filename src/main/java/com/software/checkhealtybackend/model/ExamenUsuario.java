@@ -49,7 +49,7 @@ public class ExamenUsuario implements Serializable {
     private Long idTipoMedida;
 
     @Column(name = "frecuencia")
-    private String frecuencia;
+    private float frecuencia;
 
     @Column(name = "fechaInicio")
     @Temporal(TemporalType.DATE)

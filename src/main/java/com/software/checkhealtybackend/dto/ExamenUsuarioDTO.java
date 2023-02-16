@@ -35,7 +35,7 @@ public class ExamenUsuarioDTO implements Serializable {
 
     private String nombreTipoMedida;
 
-    private String frecuencia;
+    private float frecuencia;
 
     @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
     private Date fechaInicio;

@@ -15,7 +15,7 @@ public interface ITomaExamenRepository extends JpaRepository<TomaExamen, Long> {
 
     /**Trae tomaExamenes Cumplidos o No cumplidos**/
     @Query("SELECT t FROM TomaExamen t " +
-            " WHERE t.programacionExamen.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser " +
+            " WHERE t.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser " +
             " AND ((t.fechaHora >=:aFechaDesde) OR :aFechaDesde IS NULL) " +
             " AND ((t.fechaHora <=:aFechaHasta) OR :aFechaHasta IS NULL) " +
             " AND ((t.checkk =:aCheckk) OR :aCheckk IS NULL) ")
@@ -24,6 +24,6 @@ public interface ITomaExamenRepository extends JpaRepository<TomaExamen, Long> {
 
     /**Trae tomaExamenes segun idUsuario**/
     @Query("SELECT t FROM TomaExamen t " +
-            " WHERE  ((t.programacionExamen.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) ")
+            " WHERE  ((t.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) ")
     List<TomaExamen> findTomaExamenByUser(Long aIdUser);
 }

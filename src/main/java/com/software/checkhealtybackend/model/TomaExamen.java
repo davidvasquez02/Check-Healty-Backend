@@ -35,12 +35,12 @@ public class TomaExamen implements Serializable {
     @Column(name = "nroExamen")
     private Long nroExamen;
 
-    @Column(name = "idProgramacionExamen", nullable = false)
-    private Long idProgramacionExamen;
+    @Column(name = "idExamenUsuario", nullable = false)
+    private Long idExamenUsuario;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProgramacionExamen", insertable = false, updatable = false)
-    private ProgramacionExamen programacionExamen;
+    @JoinColumn(name = "idExamenUsuario", insertable = false, updatable = false)
+    private ExamenUsuario examenUsuario;
 
 }

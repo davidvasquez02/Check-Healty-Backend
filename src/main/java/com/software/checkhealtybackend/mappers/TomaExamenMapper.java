@@ -15,6 +15,5 @@ public interface TomaExamenMapper {
     TomaExamen toTomaExamen(TomaExamenDTO aTomaExamenDTO);
 
     //Entity to DTO
-    @Mapping(target = "idProgramacionExamen", source = "programacionExamen.id")
     TomaExamenDTO toTomaExamenDTO(TomaExamen aTomaExamen);
 }

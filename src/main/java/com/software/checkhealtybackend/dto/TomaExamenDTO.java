@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +19,13 @@ public class TomaExamenDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idProgramacionExamen;
+    private Long idExamenUsuario;
 
     private Boolean Checkk;
 
     private Long nroExamen;
 
+    @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaHora;
 
 }

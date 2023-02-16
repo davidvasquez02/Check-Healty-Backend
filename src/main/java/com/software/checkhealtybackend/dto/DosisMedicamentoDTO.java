@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class DosisMedicamentoDTO implements Serializable {
 
     private Boolean checkk;
 
+    @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaHora;
 
 }
