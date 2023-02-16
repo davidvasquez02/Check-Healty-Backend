@@ -7,14 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ExamenUsuarioServiceImpl implements IExamenUsuarioService {
 
     private IExamenUsuarioRepository examenUsuarioRepository;
 
     @Override
-    public ExamenUsuario findById(Long aId) {
-        return this.examenUsuarioRepository.findById(aId).orElse(null);
+    public List<ExamenUsuario> findById(Long aId) {
+        return this.examenUsuarioRepository.findByIdEnfermedadUsuario(aId);
     }
 
     @Override

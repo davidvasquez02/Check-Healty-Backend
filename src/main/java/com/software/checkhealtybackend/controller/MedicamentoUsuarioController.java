@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/medicamentoUsuario")
@@ -16,10 +19,10 @@ public class MedicamentoUsuarioController {
     private IMedicamentoUsuarioService medicamentoUsuarioService;
 
 
-        @GetMapping("/id/{id}")
-        public ResponseEntity<MedicamentoUsuarioDTO> findById(@PathVariable(value = "id") Long aId) {
+        @GetMapping("/id")
+        public ResponseEntity<List<MedicamentoUsuarioDTO>> findById(@RequestParam(value = "idEnfermedadUsuario") Long aId) {
             var medicamentoUsuario = this.medicamentoUsuarioService.findById(aId);
-            return new ResponseEntity<>(MedicamentoUsuarioMapper.INSTANCE.toMedicamentoUsuarioDTO(medicamentoUsuario), HttpStatus.OK);
+            return new ResponseEntity<>(medicamentoUsuario.stream().map(MedicamentoUsuarioMapper.INSTANCE::toMedicamentoUsuarioDTO).collect(Collectors.toList()), HttpStatus.OK);
         }
 
         @PostMapping

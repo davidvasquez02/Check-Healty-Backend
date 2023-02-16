@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,9 +37,11 @@ public class ExamenUsuarioDTO implements Serializable {
 
     private String frecuencia;
 
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
     private Date fechaInicio;
 
-    private String medidaMax;
+    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
+    private Date fechaFin;
 
-    private String medidaMin;
+    private String medida;
 }

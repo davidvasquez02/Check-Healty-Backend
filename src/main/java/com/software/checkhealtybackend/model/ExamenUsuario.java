@@ -52,13 +52,15 @@ public class ExamenUsuario implements Serializable {
     private String frecuencia;
 
     @Column(name = "fechaInicio")
+    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 
-    @Column(name = "medidaMin")
-    private String medidaMin;
+    @Column(name = "fechaFin")
+    @Temporal(TemporalType.DATE)
+    private Date fechaFin;
 
-    @Column(name = "medidaMax")
-    private String medidaMax;
+    @Column(name = "medida")
+    private String medida;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
