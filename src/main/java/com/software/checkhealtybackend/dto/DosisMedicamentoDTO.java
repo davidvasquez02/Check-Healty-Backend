@@ -21,10 +21,16 @@ public class DosisMedicamentoDTO implements Serializable {
     @NotNull
     private Long idMedicamentoUsuario;
 
+    @NotNull
+    private Long idEnfermedadUsuario;
+
+    private String nombre;
+    private String dosis;
+    private String nombreTipoDosis;
+
     private Long nroDosis;
 
     private Boolean checkk;
-
     @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaHora;
 
