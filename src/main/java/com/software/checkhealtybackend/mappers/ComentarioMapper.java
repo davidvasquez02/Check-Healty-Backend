@@ -1,24 +1,23 @@
 package com.software.checkhealtybackend.mappers;
 
-import com.software.checkhealtybackend.dto.MensajeDTO;
-import com.software.checkhealtybackend.model.Mensaje;
+import com.software.checkhealtybackend.dto.ComentarioDTO;
+import com.software.checkhealtybackend.model.Comentario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface MensajeMapper {
+public interface ComentarioMapper {
 
-    MensajeMapper INSTANCE = Mappers.getMapper(MensajeMapper.class);
+    ComentarioMapper INSTANCE = Mappers.getMapper(ComentarioMapper.class);
 
     // DTO's to Entity
-    Mensaje toMensaje(MensajeDTO aMensajeDTO);
+    Comentario toMensaje(ComentarioDTO aComentarioDTO);
 
     //Entity to DTO
     @Mapping(target = "idUsuario", source = "usuario.id")
     @Mapping(target = "nombreUsuario", source = "usuario.nombre")
     @Mapping(target = "idPublicacion", source = "publicacion.id")
-    @Mapping(target = "nombrePublicacion", source = "publicacion.titulo")
-    MensajeDTO toMensajeDTO(Mensaje aMensaje);
+    ComentarioDTO toMensajeDTO(Comentario aComentario);
 
 }
