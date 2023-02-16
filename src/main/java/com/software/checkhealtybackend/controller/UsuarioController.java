@@ -57,7 +57,9 @@ public class UsuarioController {
     //Inicio de sesion
     @GetMapping("/inicioSesion")
     public ResponseEntity<UsuarioDTO> sesionUsuario(@RequestParam(name = "correo") String aCorreo,
-                                              @RequestParam(value = "contraseña") String aContraseña) {
+                                                    @RequestParam(value = "contraseña") String aContraseña,
+                                                    @RequestParam String token) {
+        Token token1 = tokenRepository.save(new Token(1,token));
         var valid = this.usuarioService.sesionUsuario(aCorreo,aContraseña);
         return new ResponseEntity<>(UsuarioMapper.INSTANCE.toUsuarioDTO(valid), HttpStatus.OK);
     }

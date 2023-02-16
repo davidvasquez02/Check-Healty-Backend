@@ -39,7 +39,7 @@ public class DosisNotificacionService {
         serviceNotificationDTO.setNotification(notification);
         Optional<Token> token = tokenRepository.findById(1);
         System.out.println(token.get().getToken());
-        serviceNotificationDTO.setTo("fiCuTqpbuq3leBSn0LcL8N:APA91bGqDeGNNwt9QAePGZnLUfhbVJ-CpOpjfpUdp8nnw9V-yuB2mOXy5ByiXyhfmi-D-J0Pig9iMMvkBoeFltgqpdxq2iFo_3eadfBkteAdvP3nOY--wsiXUuYTuAKikWFxwK5KKTp4");
+        serviceNotificationDTO.setTo(token.get().getToken());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
