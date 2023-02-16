@@ -15,9 +15,7 @@ public interface EnfermedadUsuarioMapper {
     EnfermedadUsuario toEnfermedadUsuario(EnfermedadUsuarioDTO aEnfermedadUsuarioDTO);
 
     //Entity to DTO
-    @Mapping(target = "idUsuario", source = "usuario.id")
     @Mapping(target = "nombreUsuario", source = "usuario.nombre")
-    @Mapping(target = "idEnfermedad", source = "enfermedad.id")
     @Mapping(target = "nombreEnfermedad", source = "enfermedad.nombre")
     EnfermedadUsuarioDTO toEnfermedadUsuarioDTO(EnfermedadUsuario aEnfermedadUsuario);
 }

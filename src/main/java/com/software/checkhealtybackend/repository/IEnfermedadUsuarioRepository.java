@@ -11,6 +11,6 @@ public interface IEnfermedadUsuarioRepository extends JpaRepository<EnfermedadUs
 
     /**Verifica que NO exista usuario con el username**/
     @Query("SELECT e FROM EnfermedadUsuario e " +
-            " WHERE e.usuario.id =:aIdUser " )
+            " WHERE e.idUsuario =:aIdUser " )
     List<EnfermedadUsuario> findByIdUser(Long aIdUser);
 }

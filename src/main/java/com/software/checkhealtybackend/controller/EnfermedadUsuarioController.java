@@ -44,8 +44,8 @@ public class EnfermedadUsuarioController {
     }
 
     //Lista EnfermedadUsuario by idUser
-    @GetMapping("/allByUser/{idUser}")
-    public ResponseEntity <List<EnfermedadUsuarioDTO>> findByIdUser(@PathVariable(value = "idUser") Long aIdUser) {
+    @GetMapping("/allByUser")
+    public ResponseEntity <List<EnfermedadUsuarioDTO>> findByIdUser(@RequestParam(value = "idUser") Long aIdUser) {
         var listEnfermedadUsuario = this.enfermedadUsuarioService.findByIdUser(aIdUser);
         return new ResponseEntity<>(listEnfermedadUsuario.stream().map(EnfermedadUsuarioMapper.INSTANCE::toEnfermedadUsuarioDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
