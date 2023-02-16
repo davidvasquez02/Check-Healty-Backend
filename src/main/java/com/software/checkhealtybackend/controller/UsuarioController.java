@@ -27,8 +27,8 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> createUsuario(@RequestBody UsuarioDTO aUsuarioDTO) {
-        var usuario = this.usuarioService.createUsuario(UsuarioMapper.INSTANCE.toUsuario(aUsuarioDTO));
-        return new ResponseEntity<>(UsuarioMapper.INSTANCE.toUsuarioDTO(usuario), HttpStatus.OK);
+        var usuario = this.usuarioService.createUsuario(aUsuarioDTO);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
     @PutMapping
