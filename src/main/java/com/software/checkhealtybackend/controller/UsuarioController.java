@@ -2,6 +2,8 @@ package com.software.checkhealtybackend.controller;
 
 import com.software.checkhealtybackend.dto.UsuarioDTO;
 import com.software.checkhealtybackend.mappers.UsuarioMapper;
+import com.software.checkhealtybackend.model.Token;
+import com.software.checkhealtybackend.repository.ITokenRepository;
 import com.software.checkhealtybackend.service.interfaces.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,9 @@ public class UsuarioController {
 
     private IUsuarioService usuarioService;
 
+    @Autowired
+    private ITokenRepository tokenRepository;
+
     @GetMapping("/id")
     public ResponseEntity<UsuarioDTO> findById(@RequestParam(value = "idUsuario") Long aId) {
         var usuario = this.usuarioService.findById(aId);
@@ -35,6 +40,12 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> updateUsuario(@RequestBody UsuarioDTO aUsuarioDTO) {
         var usuario = this.usuarioService.updateUsuario(UsuarioMapper.INSTANCE.toUsuario(aUsuarioDTO));
         return new ResponseEntity<>(UsuarioMapper.INSTANCE.toUsuarioDTO(usuario), HttpStatus.OK);
+    }
+
+    @PutMapping("/token")
+    public ResponseEntity<Token> token(@RequestBody Token token) {
+        Token token1 = tokenRepository.save(token);
+        return new ResponseEntity<>(token1, HttpStatus.OK);
     }
 
     @DeleteMapping("/id/{id}")
