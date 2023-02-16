@@ -49,7 +49,7 @@ public class MedicamentoUsuario implements Serializable {
     private String dosis;
 
     @Column(name = "frecuencia")
-    private String frecuencia;
+    private Double frecuencia;
 
     @Column(name = "fechaInicio")
     @Temporal(TemporalType.DATE)

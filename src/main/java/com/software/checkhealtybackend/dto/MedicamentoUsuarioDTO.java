@@ -37,7 +37,7 @@ public class MedicamentoUsuarioDTO implements Serializable {
 
     private String dosis;
 
-    private String frecuencia;
+    private Double frecuencia;
 
     @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
     private Date fechaInicio;

@@ -19,6 +19,6 @@ public class TipoFrecuenciaDTO  implements Serializable {
     @NotNull
     private String nombre;
 
-    private String multiplicador;
+    private Double multiplicador;
 
 }

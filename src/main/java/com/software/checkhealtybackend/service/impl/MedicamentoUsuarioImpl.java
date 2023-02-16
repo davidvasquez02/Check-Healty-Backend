@@ -1,18 +1,25 @@
 package com.software.checkhealtybackend.service.impl;
 
+import com.software.checkhealtybackend.model.DosisMedicamento;
 import com.software.checkhealtybackend.model.MedicamentoUsuario;
+import com.software.checkhealtybackend.repository.IDosisMedicamentoRepository;
 import com.software.checkhealtybackend.repository.IMedicamentoUsuarioRepository;
 import com.software.checkhealtybackend.service.interfaces.IMedicamentoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class MedicamentoUsuarioImpl implements IMedicamentoUsuarioService {
 
     private IMedicamentoUsuarioRepository medicamentoUsuarioRepository;
+
+    private IDosisMedicamentoRepository dosisMedicamentoRepository;
+
 
     @Override
     public List<MedicamentoUsuario> findById(Long aId) {
@@ -22,7 +29,28 @@ public class MedicamentoUsuarioImpl implements IMedicamentoUsuarioService {
     @Override
     @Transactional
     public MedicamentoUsuario createMedicamentoUsuario(MedicamentoUsuario aMedicamentoUsuario){
-        return this.medicamentoUsuarioRepository.save(aMedicamentoUsuario);
+        var medicamentoUsuario = this.medicamentoUsuarioRepository.save(aMedicamentoUsuario);
+
+        //Crear DosisMedicamento
+        Date dateFrecuencia = aMedicamentoUsuario.getFechaInicio();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateFrecuencia);
+        for(int i=0; i<50; i=i+1){
+            DosisMedicamento dosisMedicamento = new DosisMedicamento();
+            dosisMedicamento.setIdMedicamentoUsuario(medicamentoUsuario.getId());
+            dosisMedicamento.setNroDosis(Long.valueOf(i));
+            dosisMedicamento.setCheckk(false);
+            dosisMedicamento.setFechaHora(dateFrecuencia);
+            this.dosisMedicamentoRepository.save(dosisMedicamento);
+
+
+            //Sumar cantidad de horas
+            int newFrecuencia = Integer.valueOf((int) (aMedicamentoUsuario.getFrecuencia()*aMedicamentoUsuario.getTipoFrecuencia().getMultiplicador()*60));
+            calendar.add(Calendar.MINUTE, newFrecuencia);
+            dateFrecuencia = calendar.getTime();
+        }
+
+        return medicamentoUsuario;
     }
 
     @Override
@@ -41,6 +69,12 @@ public class MedicamentoUsuarioImpl implements IMedicamentoUsuarioService {
     @Autowired
     public void setMedicamentoUsuarioRepository(IMedicamentoUsuarioRepository medicamentoUsuarioRepository){
         this.medicamentoUsuarioRepository = medicamentoUsuarioRepository;
+    }
+
+
+    @Autowired
+    public void setDosisMedicamentoRepository(IDosisMedicamentoRepository dosisMedicamentoRepository){
+        this.dosisMedicamentoRepository = dosisMedicamentoRepository;
     }
 }
 
