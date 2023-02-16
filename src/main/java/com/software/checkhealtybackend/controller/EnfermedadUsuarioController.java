@@ -37,8 +37,8 @@ public class EnfermedadUsuarioController {
         return new ResponseEntity<>(EnfermedadUsuarioMapper.INSTANCE.toEnfermedadUsuarioDTO(enfermedad), HttpStatus.OK);
     }
 
-    @DeleteMapping("/id/{id}")
-    public ResponseEntity<Boolean> deleteEnfermedadUsuario(@PathVariable(value = "id") Long aId) {
+    @DeleteMapping("/id")
+    public ResponseEntity<Boolean> deleteEnfermedadUsuario(@RequestParam(value = "id") Long aId) {
         this.enfermedadUsuarioService.deleteEnfermedadUsuario(aId);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
