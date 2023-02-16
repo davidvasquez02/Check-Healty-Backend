@@ -38,7 +38,7 @@ public class MedicamentoUsuarioImpl implements IMedicamentoUsuarioService {
         Date dateFrecuencia = aMedicamentoUsuario.getFechaInicio();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dateFrecuencia);
-        for(int i=0; i<10; i=i+1){
+        for(int i=0; i<50; i=i+1){
             DosisMedicamento dosisMedicamento = new DosisMedicamento();
             dosisMedicamento.setIdMedicamentoUsuario(medicamentoUsuario.getId());
             dosisMedicamento.setNroDosis(Long.valueOf(i));

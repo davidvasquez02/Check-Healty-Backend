@@ -15,11 +15,9 @@ public interface MedicamentoUsuarioMapper {
     MedicamentoUsuario toMedicamentoUsuario(MedicamentoUsuarioDTO aMedicamentoUsuarioDTO);
 
     //Entity to DTO
-    @Mapping(target = "idEnfermedadUsuario", source = "enfermedadUsuario.id") //Programacion Medicamento
-    @Mapping(target = "idTipoFrecuencia", source = "tipoFrecuencia.id")
+
     @Mapping(target = "nombreTipoFrecuencia", source = "tipoFrecuencia.nombre")
     @Mapping(target = "multiplicadorTipoFrecuencia", source = "tipoFrecuencia.multiplicador")
-    @Mapping(target = "idTipoDosis", source = "tipoDosis.id")
     @Mapping(target = "nombreTipoDosis", source = "tipoDosis.nombre")
     MedicamentoUsuarioDTO toMedicamentoUsuarioDTO(MedicamentoUsuario aMedicamentoUsuario);
 }
