@@ -51,6 +51,13 @@ public class TomaExamenServiceImpl implements ITomaExamenService {
         return this.tomaExamenRepository.findTomaExamenByUser(aIdUser);
     }
 
+    @Override
+    @Transactional
+    public List<TomaExamen> findAllBeforeCurrentDate(Long aIdUser){
+        Date date = new Date();
+        return this.tomaExamenRepository.findAllBeforeCurrentDate(aIdUser, date);
+    }
+
 
     @Autowired
     public void setTomaExamenRepository(ITomaExamenRepository tomaExamenRepository){

@@ -1,6 +1,8 @@
 package com.software.checkhealtybackend.controller;
 
+import com.software.checkhealtybackend.dto.DosisMedicamentoDTO;
 import com.software.checkhealtybackend.dto.TomaExamenDTO;
+import com.software.checkhealtybackend.mappers.DosisMedicamentoMapper;
 import com.software.checkhealtybackend.mappers.TomaExamenMapper;
 import com.software.checkhealtybackend.service.interfaces.ITomaExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,13 @@ public class TomaExamenController {
     public ResponseEntity <List<TomaExamenDTO>> findAllByIdUser(@RequestParam(name = "idUser", required = false) Long aIdUser) {
         var listTomaExamen = this.tomaExamenService.findAllByUser(aIdUser);
         return new ResponseEntity<>(listTomaExamen.stream().map(TomaExamenMapper.INSTANCE::toTomaExamenDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    //DosisMedicamento antes de según idUsuario
+    @GetMapping("/allBefore")
+    public ResponseEntity <List<TomaExamenDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+        var listDosisMedicamento = this.tomaExamenService.findAllBeforeCurrentDate(aIdUser);
+        return new ResponseEntity<>(listDosisMedicamento.stream().map(TomaExamenMapper.INSTANCE::toTomaExamenDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 

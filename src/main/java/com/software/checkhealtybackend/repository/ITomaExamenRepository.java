@@ -1,5 +1,6 @@
 package com.software.checkhealtybackend.repository;
 
+import com.software.checkhealtybackend.model.DosisMedicamento;
 import com.software.checkhealtybackend.model.TomaExamen;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,4 +27,10 @@ public interface ITomaExamenRepository extends JpaRepository<TomaExamen, Long> {
     @Query("SELECT t FROM TomaExamen t " +
             " WHERE  ((t.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) ")
     List<TomaExamen> findTomaExamenByUser(Long aIdUser);
+
+    /**Trae tomaExamenes antes de la fecha actual segun idUsuario**/
+    @Query("SELECT t FROM TomaExamen t " +
+            " WHERE ((t.examenUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) " +
+            " AND (t.fechaHora <:date) OR :date IS NULL")
+    List<TomaExamen> findAllBeforeCurrentDate(Long aIdUser, Date date);
 }

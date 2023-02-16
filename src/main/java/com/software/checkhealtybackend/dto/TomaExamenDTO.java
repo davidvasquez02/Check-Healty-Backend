@@ -21,10 +21,16 @@ public class TomaExamenDTO implements Serializable {
     @NotNull
     private Long idExamenUsuario;
 
-    private Boolean Checkk;
+    @NotNull
+    private Long idEnfermedadUsuario;
 
-    private Long nroExamen;
+    private String nombre;
+    private String medida;
+    private String nombreTipoMedida;
 
+    private Long nroDosis;
+
+    private Boolean checkk;
     @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaHora;
 
