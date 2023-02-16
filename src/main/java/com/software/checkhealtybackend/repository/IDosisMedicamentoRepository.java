@@ -1,7 +1,6 @@
 package com.software.checkhealtybackend.repository;
 
 import com.software.checkhealtybackend.model.DosisMedicamento;
-import com.software.checkhealtybackend.model.DosisMedicamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -25,4 +24,12 @@ public interface IDosisMedicamentoRepository  extends JpaRepository<DosisMedicam
     @Query("SELECT t FROM DosisMedicamento t " +
             " WHERE  ((t.medicamentoUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) ")
     List<DosisMedicamento> findDosisMedicamentoByUser(Long aIdUser);
+
+
+    /**Trae DosisMedicamento antes de la fecha actual segun idUsuario**/
+    @Query("SELECT t FROM DosisMedicamento t " +
+            " WHERE ((t.medicamentoUsuario.enfermedadUsuario.usuario.id =:aIdUser) OR :aIdUser IS NULL) " +
+            " AND (t.fechaHora <:date) OR :date IS NULL")
+    List<DosisMedicamento> findAllBeforeCurrentDate(Long aIdUser, Date date);
+
 }

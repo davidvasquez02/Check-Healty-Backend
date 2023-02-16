@@ -1,8 +1,6 @@
 package com.software.checkhealtybackend.controller;
 
 import com.software.checkhealtybackend.dto.DosisMedicamentoDTO;
-import com.software.checkhealtybackend.dto.DosisMedicamentoDTO;
-import com.software.checkhealtybackend.mappers.DosisMedicamentoMapper;
 import com.software.checkhealtybackend.mappers.DosisMedicamentoMapper;
 import com.software.checkhealtybackend.service.interfaces.IDosisMedicamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,6 +68,13 @@ public class DosisMedicamentoController {
     @GetMapping("/all")
     public ResponseEntity <List<DosisMedicamentoDTO>> findAllByIdUser(@RequestParam(name = "idUser", required = false) Long aIdUser) {
         var listDosisMedicamento = this.dosisMedicamentoService.findAllByUser(aIdUser);
+        return new ResponseEntity<>(listDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    //DosisMedicamento antes de según idUsuario
+    @GetMapping("/allBefore")
+    public ResponseEntity <List<DosisMedicamentoDTO>> findAllBeforeCurrentDate(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+        var listDosisMedicamento = this.dosisMedicamentoService.findAllBeforeCurrentDate(aIdUser);
         return new ResponseEntity<>(listDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
