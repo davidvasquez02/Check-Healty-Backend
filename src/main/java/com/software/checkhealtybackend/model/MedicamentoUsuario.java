@@ -18,7 +18,7 @@ import java.util.Date;
 @Table(name = "medicamento_usuario", schema = "checkhealthdb")
 public class MedicamentoUsuario implements Serializable {
 
-    private static final long serialVersionUID = -7559914281691945367L;
+    private static final long serialVersionUID = 3775235746751698241L;
 
     // Atributos
     @Id
@@ -49,7 +49,7 @@ public class MedicamentoUsuario implements Serializable {
     private String dosis;
 
     @Column(name = "frecuencia")
-    private Double frecuencia;
+    private float frecuencia;
 
     @Column(name = "fechaInicio")
     @Temporal(TemporalType.DATE)

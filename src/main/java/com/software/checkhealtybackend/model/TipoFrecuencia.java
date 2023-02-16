@@ -28,5 +28,5 @@ public class TipoFrecuencia implements Serializable {
     private String nombre;
 
     @Column(name = "multiplicador")
-    private Double multiplicador;
+    private float multiplicador;
 }

@@ -1,7 +1,6 @@
 package com.software.checkhealtybackend.service.impl;
 
 import com.software.checkhealtybackend.model.TipoFrecuencia;
-import com.software.checkhealtybackend.model.TipoFrecuencia;
 import com.software.checkhealtybackend.repository.ITipoFrecuenciaRepository;
 import com.software.checkhealtybackend.service.interfaces.ITipoFrecuenciaService;
 import org.springframework.beans.factory.annotation.Autowired;

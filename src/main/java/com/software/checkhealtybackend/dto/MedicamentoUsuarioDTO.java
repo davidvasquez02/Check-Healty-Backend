@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class MedicamentoUsuarioDTO implements Serializable {
 
-    private static final long serialVersionUID = -7759919656031580999L;
+    private static final long serialVersionUID = -5345862435502803275L;
 
     private Long id;
 
@@ -30,6 +30,8 @@ public class MedicamentoUsuarioDTO implements Serializable {
 
     private String nombreTipoFrecuencia;
 
+    private String multiplicadorTipoFrecuencia;
+
     @NotNull
     private Long idTipoDosis;
 
@@ -37,12 +39,12 @@ public class MedicamentoUsuarioDTO implements Serializable {
 
     private String dosis;
 
-    private Double frecuencia;
+    private float frecuencia;
 
-    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
+    @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaInicio;
 
-    @JsonFormat(pattern = "dd-MM-yyyy", timezone = "America/Bogota")
+    @JsonFormat(pattern = "dd-M-yyyy hh:mm:ss", timezone = "America/Bogota")
     private Date fechaFin;
 
 }
