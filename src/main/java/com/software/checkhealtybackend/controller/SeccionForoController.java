@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/seccionForo")
@@ -20,6 +23,13 @@ public class SeccionForoController {
     public ResponseEntity<SeccionForoDTO> findById(@PathVariable(value = "id") Long aId) {
         var seccionForo = this.seccionForoService.findById(aId);
         return new ResponseEntity<>(SeccionForoMapper.INSTANCE.toSeccionForoDTO(seccionForo), HttpStatus.OK);
+    }
+
+    //Obtiene todas las secciones
+    @GetMapping("/allSeccion")
+    public ResponseEntity<List<SeccionForoDTO>> getAll() {
+        return new ResponseEntity<>(this.seccionForoService.getAll().stream()
+                .map(SeccionForoMapper.INSTANCE::toSeccionForoDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @PostMapping

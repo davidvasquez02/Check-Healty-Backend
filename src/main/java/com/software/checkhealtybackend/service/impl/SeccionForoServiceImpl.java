@@ -7,38 +7,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class SeccionForoServiceImpl implements ISeccionForoService {
 
-    private ISeccionForoRepository notificacionRepository;
+    private ISeccionForoRepository seccionForoRepository;
 
 
     @Override
     public SeccionForo findById(Long aId) {
-        return this.notificacionRepository.findById(aId).orElse(null);
+        return this.seccionForoRepository.findById(aId).orElse(null);
+    }
+
+    //Obtiene todas las secciones
+    @Override
+    public List<SeccionForo> getAll(){
+        return this.seccionForoRepository.findAll();
     }
 
     @Override
     @Transactional
     public SeccionForo createSeccionForo(SeccionForo aSeccionForo){
-        return this.notificacionRepository.save(aSeccionForo);
+        return this.seccionForoRepository.save(aSeccionForo);
     }
 
     @Override
     @Transactional
     public SeccionForo updateSeccionForo(SeccionForo aSeccionForo){
-        return this.notificacionRepository.save(aSeccionForo);
+        return this.seccionForoRepository.save(aSeccionForo);
     }
 
     @Override
     @Transactional
     public void deleteSeccionForo(Long aId) {
-        this.notificacionRepository.deleteById(aId);
+        this.seccionForoRepository.deleteById(aId);
     }
 
 
     @Autowired
-    public void setSeccionForoRepository(ISeccionForoRepository notificacionRepository){
-        this.notificacionRepository = notificacionRepository;
+    public void setSeccionForoRepository(ISeccionForoRepository seccionForoRepository){
+        this.seccionForoRepository = seccionForoRepository;
     }
 }
