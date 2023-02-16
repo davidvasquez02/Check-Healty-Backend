@@ -25,5 +25,6 @@ public class EnfermedadUsuarioDTO implements Serializable {
     private String nombreUsuario;
 
     private String nombreEnfermedad;
+    private Boolean padece;
 
 }
