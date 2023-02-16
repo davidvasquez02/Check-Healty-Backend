@@ -28,7 +28,7 @@ public class SeccionForo implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "nroExamen")
+    @Column(name = "descripcion")
     private String descripcion;
 
 }
