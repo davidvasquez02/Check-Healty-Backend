@@ -21,4 +21,6 @@ public interface IDosisMedicamentoService {
     List<DosisMedicamento> findDosisMedicamentoByCheck(Long aIdUser, Date aFechaDesde, Date aFechaHasta, Boolean aCheck);
 
     List<DosisMedicamento> findAllByUser(Long aIdUser);
+
+    List<List<List<String>>> findEstadistica (Long aIdUser);
 }

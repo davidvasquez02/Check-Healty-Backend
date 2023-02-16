@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,6 +56,16 @@ public class DosisMedicamentoController {
         var listaDosisMedicamento = this.dosisMedicamentoService.findDosisMedicamentoByCheck(User, aFechaDesde, aFechaHasta, aCheck);
         return new ResponseEntity<>(listaDosisMedicamento.stream().map(DosisMedicamentoMapper.INSTANCE::toDosisMedicamentoDTO).collect(Collectors.toList()), HttpStatus.OK);
     }
+
+
+
+    //Estadisticas
+    @GetMapping("/estadisticas")
+    public ResponseEntity  <List<List<List<String>>>> findEstadisticaByIdUser(@RequestParam(name = "idUser", required = false) Long aIdUser) {
+        var listEstadistica = this.dosisMedicamentoService.findEstadistica(aIdUser);
+        return new ResponseEntity<>(listEstadistica, HttpStatus.OK);
+    }
+
 
     //DosisMedicamento según idUsuario
     @GetMapping("/all")

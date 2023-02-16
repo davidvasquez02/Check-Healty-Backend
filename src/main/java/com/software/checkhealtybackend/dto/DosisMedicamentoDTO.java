@@ -18,7 +18,7 @@ public class DosisMedicamentoDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idProgramacionMedicamento;
+    private Long idMedicamentoUsuario;
 
     private Long nroDosis;
 

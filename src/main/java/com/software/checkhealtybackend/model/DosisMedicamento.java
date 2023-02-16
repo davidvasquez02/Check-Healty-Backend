@@ -26,8 +26,8 @@ public class DosisMedicamento implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "idProgramacionMedicamento", nullable = false)
-    private Long idProgramacionMedicamento;
+    @Column(name = "idMedicamentoUsuario", nullable = false)
+    private Long idMedicamentoUsuario;
 
     @Column(name = "nroDosis")
     private Long nroDosis;
@@ -40,6 +40,6 @@ public class DosisMedicamento implements Serializable {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProgramacionMedicamento", insertable = false, updatable = false)
-    private ProgramacionMedicamento programacionMedicamento;
+    @JoinColumn(name = "idMedicamentoUsuario", insertable = false, updatable = false)
+    private MedicamentoUsuario medicamentoUsuario;
 }
